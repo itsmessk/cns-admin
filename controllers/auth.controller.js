@@ -41,7 +41,7 @@
 
 
             await session.commitTransaction();
-            await session.endSession();
+
 
             res
                 .status(201)
@@ -54,9 +54,13 @@
 
 
         } catch (error) {
-            await session.abortTransaction();
-            await session.endSession();
+            if(session.inTransaction()){
+                await session.abortTransaction();
+            }
             next(error);
+        }
+        finally{
+            await session.endSession();
         }
     }
 
