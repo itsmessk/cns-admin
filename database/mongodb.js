@@ -6,7 +6,6 @@ if(!MONGO_URI){
     throw new Error('MONGO_URI is not defined');
 }
 
-
 const connnectDb = async () => {
     try {
         await mongoose.connect(MONGO_URI);
