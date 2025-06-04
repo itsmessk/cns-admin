@@ -183,17 +183,19 @@ const serviceRequestSchema = new mongoose.Schema({
 
     serviceRating: {
         type: Number,
-        required: [true, 'Service Rating is required']
+        default: 0,
     },
 
 
     serviceReview: {
         type: String,
-        required: [true, 'Service Rating Average is required']
+        minlength: [10, 'Service Review is required'],
+        maxlength: [2000, 'Service Review is required']
     },
 
 }, {
-    timestamps: true
+    timestamps: true,
+    collection: 'serviceRequests',
 });
 
 serviceRequestSchema.pre('save', function(next){

@@ -1,14 +1,16 @@
 import mongoose from 'mongoose';
 
-import {NODE_ENV, MONGO_URI} from '../config/env.js';
+import { MONGO_URI} from '../config/env.js';
 
 if(!MONGO_URI){
     throw new Error('MONGO_URI is not defined');
 }
 
-const connnectDb = async () => {
+const connectDb = async () => {
     try {
-        await mongoose.connect(MONGO_URI);
+        await mongoose.connect(MONGO_URI, {
+            dbName: "cns"
+        });
         console.log('MongoDB Connected');
     } catch (error) {
         console.log(error);
@@ -16,4 +18,4 @@ const connnectDb = async () => {
     }
 }
 
-export default connnectDb;
+export default connectDb;
