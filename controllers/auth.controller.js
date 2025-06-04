@@ -13,6 +13,8 @@ const cookieOptions = {
     maxAge: 1000 * 60 * 60 * 24 * 10
 }
 
+console.log(cookieOptions);
+
 export const register = async (req, res, next) => {
     const session = await mongoose.startSession();
     session.startTransaction();
