@@ -12,18 +12,6 @@ CNS Admin API is a backend service built with Express.js that provides user auth
 7. [Error Handling](#error-handling)
 8. [Project Structure](#project-structure)
 
-## Environment Configuration
-The application uses environment variables that are loaded from `.env.{environment}.local` files:
-
-```
-PORT = 5000                          # Server port
-MONGO_URI = mongodb://...            # MongoDB connection string
-NODE_ENV = production                # Environment (development/production)
-SERVER_URL = http://localhost:5000/  # Base URL for the API
-JWT_SECRET = "12341234211"           # Secret key for JWT generation
-JWT_EXPIRES_IN = "10d"               # JWT token expiration
-```
-
 
 ## Database Connection
 The application connects to MongoDB using Mongoose. The connection is established when the server starts.
