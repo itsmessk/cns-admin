@@ -1,5 +1,7 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import helmet from 'helmet';
 
 import {PORT, SERVER_URL} from "./config/env.js";
 import connectDb from "./database/mongodb.js";
@@ -10,6 +12,11 @@ import serviceRequest from "./routes/serviceRequest.routes.js";
 
 const app = express();
 
+app.use(helmet());
+app.use(cors({
+    origin: ['http://localhost:3000' , "http://localhost:5500", "http://localhost:5173"],
+    credentials: true,
+}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
@@ -18,15 +25,31 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/serviceRequest", serviceRequest)
 
-app.use("/", (req, res) =>{
+app.get("/", (req, res) =>{
     res.send("Welcome to the CNS Admin API");
 });
 
+app.use("/*splat", (req, res) =>{
+    res.status(404).json({
+        success: false,
+        message: 'Route Not Found',
+    })
+})
+
 app.use(errorMiddleware);
 
-app.listen(PORT, async() =>{
-    console.log(`Server is running on port ${PORT}, use ${SERVER_URL} to access the API`);
-    connectDb();
-})
+const startServer = async () =>{
+    try{
+        await connectDb();
+        app.listen(PORT, () => {
+            console.log(`Server is running on ${SERVER_URL}`);
+        });
+    } catch(error){
+        console.log('failed to start server', error.message);
+        process.exit(1);
+    }
+}
+
+startServer();
 
 export default app;

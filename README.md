@@ -182,7 +182,7 @@ Common error types handled:
 ├── controllers/
 │   ├── auth.controller.js    # Authentication controller
 │   ├── user.controller.js    # User management controller
-│   └── serviceRequest.controllers,js.js  # Service request controller
+│   └── serviceRequest.controllers.js  # Service request controller
 ├── database/
 │   └── mongodb.js            # MongoDB connection setup
 ├── middleware/

@@ -4,7 +4,7 @@ import User from '../models/users.model.js';
 import mongoose from 'mongoose';
 import {JWT_EXPIRES_IN, JWT_SECRET, NODE_ENV} from "../config/env.js";
 
-console.log(NODE_ENV);
+
 
 const cookieOptions = {
     secure: NODE_ENV === 'production',
@@ -13,7 +13,7 @@ const cookieOptions = {
     maxAge: 1000 * 60 * 60 * 24 * 10
 }
 
-console.log(cookieOptions);
+
 
 export const register = async (req, res, next) => {
     const session = await mongoose.startSession();

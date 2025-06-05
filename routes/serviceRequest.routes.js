@@ -5,7 +5,7 @@ import {
     getServiceRequest,
     getServiceRequests, patchServiceRequest,
     setServiceRequest, updatePriceEst, updateRatingReview, updateServiceRequest, updateStatus
-} from "../controllers/serviceRequest.controllers,js.js";
+} from "../controllers/serviceRequest.controllers.js";
 
 const serviceRequest = Router();
 
