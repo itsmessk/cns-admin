@@ -219,7 +219,7 @@ export const updatePriceEst = async (req, res, next) => {
         }
         res.status(200).send({
             success: true,
-            message: 'Service request price updated successfully',
+            message: 'Service request price updated successfullyy',
         })
     } catch(error){
         next(error);
