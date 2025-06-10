@@ -29,3 +29,6 @@ serviceRequest.patch('/:id/price', authorize, updatePriceEst)
 
 export default serviceRequest;
 
+serviceRequest.get('/path', (req, res) => {
+    res.send("to find   ");
+});
