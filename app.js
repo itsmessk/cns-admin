@@ -14,7 +14,8 @@ const app = express();
 
 app.use(helmet());
 app.use(cors({
-    origin: ['http://localhost:3000' , "http://localhost:5500", "http://localhost:5173", "https://cns-admin-frontend.vercel.app ", "http://127.0.0.1:5500"],
+    origin: ['http://localhost:3000' , "http://localhost:5500", "http://localhost:5173", "https://cns-admin-frontend.vercel.app ", "http://127.0.0.1:5500",
+"https://cns-site.vercel.app"],
     credentials: true,
 }));
 app.use(express.json());
